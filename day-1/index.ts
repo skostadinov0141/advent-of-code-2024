@@ -13,7 +13,6 @@ export function day1part1() {
     const lineParts = line.split(' ')
     return parseInt(lineParts[3].trim());
   });
-  // console.log(list2)
 
   // sort lists
   const sortedList1 = list1.sort((a,b) => a - b)
@@ -38,4 +37,28 @@ export function day1part1() {
   distances.forEach(distance => totalDistance += distance)
 
   return totalDistance
+}
+
+export function day1part2() {
+  const input: string = fs.readFileSync('./day-1/input.txt', 'utf-8');
+  const parsedInput: string[] = input.split('\n')
+
+  // generate lists
+  const list1 = parsedInput.map(line => {
+    const lineParts = line.split(' ')
+    return parseInt(lineParts[0].trim());
+  });
+  const list2 = parsedInput.map(line => {
+    const lineParts = line.split(' ')
+    return parseInt(lineParts[3].trim());
+  });
+
+  // calculate score
+  let result = 0;
+  list1.forEach(item => {
+    const occurrences = list2.filter(item2 => item == item2).length
+    result += item * occurrences
+  })
+
+  return result
 }
