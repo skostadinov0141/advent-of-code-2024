@@ -1,8 +1,9 @@
 import {getInput} from "../composables";
 
 function removeElement(index: number, elementsArr: number[]){
-  console.log(elementsArr, [...elementsArr].splice(index, 1))
-  return [...elementsArr].splice(index, 1).join(' ')
+  const copyArr = [...elementsArr]
+  copyArr.splice(index,1)
+  return copyArr.join(' ')
 }
 
 function checkReport(line: string, blockRecursion: boolean = false): boolean | number[]{
