@@ -60,12 +60,15 @@ export function day5part1(){
     = parsedInput.printers.map(printer => getApplicableRules(parsedInput.rules, printer))
 
   const correctPrinter: string[] = []
+  // TODO: Create a fix order function
+  const wrongPrinter: string[] = []
 
   for (let i = 0; i < applicableRulesList.length; i++) {
     const printer = parsedInput.printers[i]
     const applicableRules = applicableRulesList[i]
     const result = testPrinter(applicableRules, printer)
     if(result) correctPrinter.push(printer)
+    else wrongPrinter.push(printer)
   }
 
   let finalResult = 0
